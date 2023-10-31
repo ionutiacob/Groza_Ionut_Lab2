@@ -8,39 +8,35 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Groza_Ionut_Lab2.Data;
 using Groza_Ionut_Lab2.Models;
 
-namespace Groza_Ionut_Lab2.Pages.Books
+namespace Groza_Ionut_Lab2.Pages.Authors
 {
     public class CreateModel : PageModel
     {
-        private readonly Groza_Ionut_Lab2.Data.Groza_Ionut_Lab2Context _context;
+        private readonly Groza_Ionut_Lab2Context _context;
 
-        public CreateModel(Groza_Ionut_Lab2.Data.Groza_Ionut_Lab2Context context)
+        public CreateModel(Groza_Ionut_Lab2Context context)
         {
             _context = context;
         }
 
         public IActionResult OnGet()
         {
-            ViewData["PublisherID"] = new SelectList(_context.Set<Publisher>(), "ID",
-        "PublisherName");
-            ViewData["AuthorsID"] = new SelectList(_context.Set<Author>(), "ID",
-        "FirstName", "LastName");
             return Page();
         }
 
         [BindProperty]
-        public Book Book { get; set; } = default!;
-        
+        public Author Authors { get; set; } = default!;
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.Book == null || Book == null)
+            if (!ModelState.IsValid || _context.Authors == null || Authors == null)
             {
                 return Page();
             }
 
-            _context.Book.Add(Book);
+            _context.Authors.Add(Authors);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

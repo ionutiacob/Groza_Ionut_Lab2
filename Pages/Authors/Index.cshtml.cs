@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Groza_Ionut_Lab2.Data;
 using Groza_Ionut_Lab2.Models;
 
-namespace Groza_Ionut_Lab2.Pages.Books
+namespace Groza_Ionut_Lab2.Pages.Authors
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,13 @@ namespace Groza_Ionut_Lab2.Pages.Books
             _context = context;
         }
 
-        public IList<Book> Book { get;set; } = default!;
+        public IList<Author> Authors { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Book != null)
+            if (_context.Authors != null)
             {
-                Book = await _context.Book.Include(b => b.Publisher).Include(b => b.Author).ToListAsync();
+                Authors = (IList<Author>)await _context.Authors.ToListAsync();
             }
         }
     }

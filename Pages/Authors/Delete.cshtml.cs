@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Groza_Ionut_Lab2.Data;
 using Groza_Ionut_Lab2.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Groza_Ionut_Lab2.Pages.Books
+namespace Groza_Ionut_Lab2.Pages.Authors
 {
     public class DeleteModel : PageModel
     {
@@ -21,43 +20,40 @@ namespace Groza_Ionut_Lab2.Pages.Books
         }
 
         [BindProperty]
-      public Book Book { get; set; } = default!;
+      public Author Authors { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Authors == null)
             {
                 return NotFound();
             }
 
-            var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
+            var authors = await _context.Authors.FirstOrDefaultAsync(m => m.ID == id);
 
-            ViewData["AuthorsID"] = new SelectList(_context.Set<Author>(), "ID",
-        "FirstName", "LastName");
-
-            if (book == null)
+            if (authors == null)
             {
                 return NotFound();
             }
             else 
             {
-                Book = book;
+                Authors = authors;
             }
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Book == null)
+            if (id == null || _context.Authors == null)
             {
                 return NotFound();
             }
-            var book = await _context.Book.FindAsync(id);
+            var authors = await _context.Authors.FindAsync(id);
 
-            if (book != null)
+            if (authors != null)
             {
-                Book = book;
-                _context.Book.Remove(Book);
+                Authors = authors;
+                _context.Authors.Remove(Authors);
                 await _context.SaveChangesAsync();
             }
 
