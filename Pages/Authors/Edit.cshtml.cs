@@ -21,21 +21,21 @@ namespace Groza_Ionut_Lab2.Pages.Authors
         }   
 
         [BindProperty]
-        public Author Authors { get; set; } = default!;
+        public Author Author { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Authors == null)
+            if (id == null || _context.Author == null)
             {
                 return NotFound();
             }
 
-            var authors =  await _context.Authors.FirstOrDefaultAsync(m => m.ID == id);
-            if (authors == null)
+            var Author =  await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
+            if (Author == null)
             {
                 return NotFound();
             }
-            Authors = authors;
+            Author = Author;
             return Page();
         }
 
@@ -48,7 +48,7 @@ namespace Groza_Ionut_Lab2.Pages.Authors
                 return Page();
             }
 
-            _context.Attach(Authors).State = EntityState.Modified;
+            _context.Attach(Author).State = EntityState.Modified;
 
             try
             {
@@ -56,7 +56,7 @@ namespace Groza_Ionut_Lab2.Pages.Authors
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AuthorsExists(Authors.ID))
+                if (!AuthorExists(Author.ID))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace Groza_Ionut_Lab2.Pages.Authors
             return RedirectToPage("./Index");
         }
 
-        private bool AuthorsExists(int id)
+        private bool AuthorExists(int id)
         {
-          return (_context.Authors?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Author?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

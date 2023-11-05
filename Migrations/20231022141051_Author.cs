@@ -19,13 +19,13 @@ namespace Groza_Ionut_Lab2.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "AuthorsID",
+                name: "AuthorID",
                 table: "Book",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "Authors",
+                name: "Author",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
@@ -35,7 +35,7 @@ namespace Groza_Ionut_Lab2.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.ID);
+                    table.PrimaryKey("PK_Author", x => x.ID);
                 });
 
             migrationBuilder.CreateIndex(
@@ -44,21 +44,21 @@ namespace Groza_Ionut_Lab2.Migrations
                 column: "AuthorID");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Book_Authors_AuthorID",
+                name: "FK_Book_Author_AuthorID",
                 table: "Book",
                 column: "AuthorID",
-                principalTable: "Authors",
+                principalTable: "Author",
                 principalColumn: "ID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Book_Authors_AuthorID",
+                name: "FK_Book_Author_AuthorID",
                 table: "Book");
 
             migrationBuilder.DropTable(
-                name: "Authors");
+                name: "Author");
 
             migrationBuilder.DropIndex(
                 name: "IX_Book_AuthorID",
@@ -69,7 +69,7 @@ namespace Groza_Ionut_Lab2.Migrations
                 table: "Book");
 
             migrationBuilder.DropColumn(
-                name: "AuthorsID",
+                name: "AuthorID",
                 table: "Book");
 
             migrationBuilder.AddColumn<string>(

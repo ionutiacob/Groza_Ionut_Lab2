@@ -38,7 +38,7 @@ namespace Groza_Ionut_Lab2.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Author");
                 });
 
             modelBuilder.Entity("Groza_Ionut_Lab2.Models.Book", b =>
@@ -52,7 +52,7 @@ namespace Groza_Ionut_Lab2.Migrations
                     b.Property<int?>("AuthorID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AuthorsID")
+                    b.Property<int?>("AuthorID")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")

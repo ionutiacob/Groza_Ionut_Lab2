@@ -19,13 +19,13 @@ namespace Groza_Ionut_Lab2.Pages.Authors
             _context = context;
         }
 
-        public IList<Author> Authors { get;set; } = default!;
+        public IList<Author> Author { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Authors != null)
+            if (_context.Author != null)
             {
-                Authors = (IList<Author>)await _context.Authors.ToListAsync();
+                Author = (IList<Author>)await _context.Author.ToListAsync();
             }
         }
     }

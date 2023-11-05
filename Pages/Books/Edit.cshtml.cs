@@ -43,7 +43,7 @@ namespace Groza_Ionut_Lab2.Pages.Books
             }
 
             PopulateAssignedCategoryData(_context, Book);
-            var authorList = _context.Authors.Select(x => new
+            var authorList = _context.Author.Select(x => new
             {
                 x.ID,
                 FullName = x.LastName + " " + x.FirstName
@@ -79,7 +79,7 @@ namespace Groza_Ionut_Lab2.Pages.Books
             if (await TryUpdateModelAsync<Book>(
             bookToUpdate,
             "Book",
-            i => i.Title, i => i.AuthorsID,
+            i => i.Title, i => i.AuthorID,
             i => i.Price, i => i.PublishingDate, i => i.PublisherID))
             {
                 UpdateBookCategories(_context, selectedCategories, bookToUpdate);

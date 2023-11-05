@@ -32,7 +32,7 @@ namespace Groza_Ionut_Lab2.Pages.Books
 
             var book = await _context.Book.FirstOrDefaultAsync(m => m.ID == id);
 
-            ViewData["AuthorsID"] = new SelectList(_context.Set<Author>(), "ID",
+            ViewData["AuthorID"] = new SelectList(_context.Set<Author>(), "ID",
         "FirstName", "LastName");
 
             if (book == null)

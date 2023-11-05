@@ -10,7 +10,7 @@ namespace Groza_Ionut_Lab2.Migrations
         {
             migrationBuilder.AlterColumn<string>(
                 name: "LastName",
-                table: "Authors",
+                table: "Author",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -18,7 +18,7 @@ namespace Groza_Ionut_Lab2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "FirstName",
-                table: "Authors",
+                table: "Author",
                 type: "nvarchar(max)",
                 nullable: true,
                 oldClrType: typeof(string),
@@ -84,7 +84,7 @@ namespace Groza_Ionut_Lab2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "LastName",
-                table: "Authors",
+                table: "Author",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",
@@ -94,7 +94,7 @@ namespace Groza_Ionut_Lab2.Migrations
 
             migrationBuilder.AlterColumn<string>(
                 name: "FirstName",
-                table: "Authors",
+                table: "Author",
                 type: "nvarchar(max)",
                 nullable: false,
                 defaultValue: "",

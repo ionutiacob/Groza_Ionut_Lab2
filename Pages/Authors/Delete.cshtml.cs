@@ -20,40 +20,37 @@ namespace Groza_Ionut_Lab2.Pages.Authors
         }
 
         [BindProperty]
-      public Author Authors { get; set; } = default!;
+        public Author Author { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Authors == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var authors = await _context.Authors.FirstOrDefaultAsync(m => m.ID == id);
+            Author = await _context.Author.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (authors == null)
+            if (Author == null)
             {
                 return NotFound();
             }
-            else 
-            {
-                Authors = authors;
-            }
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Authors == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            var authors = await _context.Authors.FindAsync(id);
 
-            if (authors != null)
+            Author = await _context.Author.FindAsync(id);
+
+            if (Author != null)
             {
-                Authors = authors;
-                _context.Authors.Remove(Authors);
+                _context.Author.Remove(Author);
                 await _context.SaveChangesAsync();
             }
 
