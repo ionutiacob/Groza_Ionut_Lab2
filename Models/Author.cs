@@ -11,7 +11,13 @@ namespace Groza_Ionut_Lab2.Models
         public string? LastName { get; set; }
 
         [DisplayName("Author")]
-        public string FullName { get { return FirstName + LastName; } }
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
         public ICollection<Book>? Books { get; set; }
     }
 }
