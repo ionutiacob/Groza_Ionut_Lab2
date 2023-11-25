@@ -25,6 +25,9 @@ namespace Groza_Ionut_Lab2.Models
 
         public Publisher? Publisher { get; set; }
 
+        public int? BorrowingID { get; set; }
+        public Borrowing? Borrowing { get; set; }
+
         [DisplayName("Category")]
         public ICollection<BookCategory>? BookCategories { get; set; }
     }
