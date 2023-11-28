@@ -62,3 +62,4 @@ namespace Groza_Ionut_Lab2.Pages.Borrowings
             return RedirectToPage("./Index");
         }
     }
+}

@@ -8,9 +8,12 @@ using Microsoft.EntityFrameworkCore;
 using Groza_Ionut_Lab2.Data;
 using Groza_Ionut_Lab2.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Groza_Ionut_Lab2.Pages.Books
 {
+
+    [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
         private readonly Groza_Ionut_Lab2.Data.Groza_Ionut_Lab2Context _context;
